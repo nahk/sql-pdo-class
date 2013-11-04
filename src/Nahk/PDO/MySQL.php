@@ -1,20 +1,19 @@
 <?php
-class MySQL extends PDO {
 
-    private static $host = 'localhost', // Database host        (default: localhost)
-    private static $port = '3306',      // Database port        (default: 3306)
-    private static $base = 'database',  // Database name
-    private static $user = 'user',      // Database username    (default: root)
-    private static $pass = 'password',  // Database password
+namespace Nahk\PDO;
 
-    private static $charset = 'utf8',   // Database charset
+use \PDO;
+use \PDOException;
 
-    public function __construct() {
+class MySQL extends PDO 
+{
 
+    private $host, $port, $base, $user, $pass, $charset;
+
+    protected function connect()
+    {
         try {
-            
             $options = self::$charset ? array(PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES '.self::$charset) : null;
-
             parent::__construct(
                 'mysql:host='.self::$host';'.
                 'port='.self::$port.';'.
@@ -24,17 +23,28 @@ class MySQL extends PDO {
                 $options
             );
             // parent::setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
         } catch(Exception $e) {
-
             echo 'Erreur : '.$e->getMessage().'<br />';
             echo 'N° : '.$e->getCode();
             // die();
-
         }
     }
+
+    public function __construct(
+        $host='localhost', $base='database', $user='user', $pass='', $port=3306, $charset='utf8'
+    ) 
+    {
+        $this->host    = $host;
+        $this->base    = $base;
+        $this->user    = $user;
+        $this->pass    = $pass;
+        $this->port    = $port:
+        $this->charset = $charset;
+        $this->connect();
+    }
     
-    public function executeQuery($query, $data = array()) {
+    public function executeQuery($query, $data = array())
+    {
         $stmt = parent::prepare($query);
         
         try {
@@ -47,19 +57,23 @@ class MySQL extends PDO {
         }
     }
     
-    public function insert($query, $data = array()) {
+    public function insert($query, $data = array())
+    {
         return $this->executeQuery($query, $array) ? ( parent::lastInsertId() ? parent::lastInsertId() : true ) : false;
     }
 
-    public function select($query, $data = array()) {
+    public function select($query, $data = array())
+    {
         return $this->executeQuery($query, $data);
     }
     
-    public function update($query, $data = array()) {
+    public function update($query, $data = array())
+    {
         return $this->executeQuery($query, $data);
     }
 
-    public function delete($query, $data = array()) {
+    public function delete($query, $data = array())
+    {
         return $this->executeQuery($query, $data);
     }
     
