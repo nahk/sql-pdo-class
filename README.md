@@ -1,7 +1,7 @@
-mysql-pdo-class
-===============
+sql-pdo-class
+=============
 
-A shortcut class of PDO to use with MySQL
+A shortcut class of PDO to use with any SQL Database (for now)
 
 Installation
 ------------
@@ -23,11 +23,11 @@ In the composer.json of your project, add :
     "repositories": [
         {
             "type": "vcs",
-            "url": "https://github.com/nahk/mysql-pdo-class.git"
+            "url": "https://github.com/nahk/sql-pdo-class.git"
         }
     ],
     "require": {
-        "nahk/mysql-pdo-class": ">=1.0-dev"
+        "nahk/sql-pdo-class": ">=1.0-dev"
     }
 
 Usage example : 
@@ -37,7 +37,7 @@ Usage example :
 
     require __DIR__.'/vendor/autoload.php';
 
-    use Nahk\PDO\MySQL;
+    use Nahk\PDO\SQL;
 
-    $con = new MySQL('host', 'db', 'user', 'pass');
+    $sql = new SQL('host', 'db', 'user', 'pass');
 

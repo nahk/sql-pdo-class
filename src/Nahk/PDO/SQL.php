@@ -5,7 +5,7 @@ namespace Nahk\PDO;
 use \PDO;
 use \PDOException;
 
-class MySQL extends PDO 
+class SQL extends PDO 
 {
 
     private $host, $port, $base, $user, $pass, $charset;
@@ -40,6 +40,7 @@ class MySQL extends PDO
         $this->pass    = $pass;
         $this->port    = $port:
         $this->charset = $charset;
+        
         $this->connect();
     }
     
