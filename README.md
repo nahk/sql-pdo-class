@@ -40,4 +40,3 @@ Usage example :
     use Nahk\PDO\MySQL;
 
     $con = new MySQL('host', 'db', 'user', 'pass');
-
