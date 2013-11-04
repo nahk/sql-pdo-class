@@ -38,7 +38,7 @@ class SQL extends PDO
         $this->base    = $base;
         $this->user    = $user;
         $this->pass    = $pass;
-        $this->port    = $port:
+        $this->port    = $port;
         $this->charset = $charset;
         
         $this->connect();
