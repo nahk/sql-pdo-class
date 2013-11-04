@@ -1,0 +1,21 @@
+{
+    "name": "nahk/mysql-pdo-class",
+    "authors": [
+        {
+            "name": "nahk",
+            "email": "nahk@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.0.0"
+    },
+    "autoload": {
+        "psr-0": { "Nahk\\": "src/" }
+    },
+    "minimum-stability": "dev",
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0-dev"
+        }
+    }
+}
