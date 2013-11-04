@@ -5,7 +5,7 @@ namespace Nahk\PDO;
 use \PDO;
 use \PDOException;
 
-class MySQL extends PDO 
+class SQL extends PDO 
 {
 
     private $host, $port, $base, $user, $pass, $charset;
@@ -13,13 +13,13 @@ class MySQL extends PDO
     protected function connect()
     {
         try {
-            $options = self::$charset ? array(PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES '.self::$charset) : null;
+            $options = $this->charset ? array(PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES '.$this->charset) : null;
             parent::__construct(
-                'mysql:host='.self::$host';'.
-                'port='.self::$port.';'.
-                'dbname='.self::$base,
-                self::$user,
-                self::$pass,
+                'mysql:host='.$this->host.';'.
+                'port='.$this->port.';'.
+                'dbname='.$this->base,
+                $this->user,
+                $this->pass,
                 $options
             );
             // parent::setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -38,8 +38,9 @@ class MySQL extends PDO
         $this->base    = $base;
         $this->user    = $user;
         $this->pass    = $pass;
-        $this->port    = $port:
+        $this->port    = $port;
         $this->charset = $charset;
+        
         $this->connect();
     }
     
