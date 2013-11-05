@@ -40,3 +40,12 @@ Usage example :
     use Nahk\PDO\SQL;
 
     $sql = new SQL('host', 'db', 'user', 'pass');
+
+Running Tests
+-------------
+
+To run tests, execute the command :
+
+    vendor/bin/phpunit
+
+Or you could use your global installation of PHPUnit to do so.
