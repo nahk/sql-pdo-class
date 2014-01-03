@@ -20,12 +20,6 @@ And then install the project :
 
 In the composer.json of your project, add :
 
-    "repositories": [
-        {
-            "type": "vcs",
-            "url": "https://github.com/nahk/sql-pdo-class.git"
-        }
-    ],
     "require": {
         "nahk/sql-pdo-class": ">=1.0-dev"
     }
