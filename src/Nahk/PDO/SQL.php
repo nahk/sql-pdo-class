@@ -60,7 +60,7 @@ class SQL extends PDO
     
     public function insert($query, $data = array())
     {
-        return $this->executeQuery($query, $array) ? ( parent::lastInsertId() ? parent::lastInsertId() : true ) : false;
+        return $this->executeQuery($query, $data) ? ( parent::lastInsertId() ? parent::lastInsertId() : true ) : false;
     }
 
     public function select($query, $data = array())
