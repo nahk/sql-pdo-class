@@ -8,21 +8,25 @@ use \PDOException;
 class SQL extends PDO 
 {
 
+    const STATEMENT_CLASS = 'Nahk\PDO\Statement';
+
     private $host, $port, $base, $user, $pass, $charset;
 
     protected function connect()
     {
         try {
-            $options = $this->charset ? array(PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES '.$this->charset) : null;
             parent::__construct(
                 'mysql:host='.$this->host.';'.
                 'port='.$this->port.';'.
                 'dbname='.$this->base,
                 $this->user,
                 $this->pass,
-                $options
+                array(
+                    PDO::ATTR_STATEMENT_CLASS    => array($this::STATEMENT_CLASS),
+                    PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
+                    PDO::MYSQL_ATTR_INIT_COMMAND => sprintf('SET NAMES `%s`', $this->charset),
+                )
             );
-            // parent::setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         } catch(Exception $e) {
             echo 'Erreur : '.$e->getMessage().'<br />';
             echo 'N° : '.$e->getCode();

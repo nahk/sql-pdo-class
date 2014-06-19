@@ -34,4 +34,14 @@ class SQLTest extends PHPUnit_Framework_TestCase
         $this->assertEquals($res->fetchColumn(1), $GLOBALS['DB_CSET']);
     }
 
+    public function testStatementClassName()
+    {
+        $conn = new SQL(
+            $GLOBALS['DB_HOST'], $GLOBALS['DB_BASE'],
+            $GLOBALS['DB_USER'], $GLOBALS['DB_PASS']
+        );
+        $res = $conn->executeQuery("SELECT 1");
+        $this->assertEquals($conn::STATEMENT_CLASS, get_class($res));
+    }
+
 }
